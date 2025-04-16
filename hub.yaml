@@ -1,0 +1,9 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosHub
+metadata:
+  name: ansiblelitmus-hub
+spec:
+  hubName: ansiblelitmus-hub
+  repoURL: https://github.com/balarobin/ansiblelitmus.git
+  branch: main
+  isPrivate: false
