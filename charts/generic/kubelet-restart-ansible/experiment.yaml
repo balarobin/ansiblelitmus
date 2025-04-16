@@ -15,7 +15,7 @@ spec:
       - "-c"
       - |
         git clone https://github.com/balarobin/ansiblelitmus /litmus-ansible &&
-        ansible-playbook /litmus-ansible/kubelet-restart.yaml -i /litmus-ansible/inventory/hosts
+        ansible-playbook /litmus-ansible/utils/kubelet-restart.yaml -i /litmus-ansible/utils/inventory/hosts
     command:
       - /bin/bash
     env:
