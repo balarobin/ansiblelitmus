@@ -1,7 +1,7 @@
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosHub
 metadata:
-  name: your-kubelet-hub
+  name: raja
   labels:
     version: v1
 spec:
