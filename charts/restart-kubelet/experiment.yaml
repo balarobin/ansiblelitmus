@@ -2,17 +2,19 @@ apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosExperiment
 metadata:
   name: restart-kubelet
-  namespace: litmus
+  labels:
+    app.kubernetes.io/part-of: litmus
 spec:
   definition:
     scope: Cluster
-    experiment: restart-kubelet
-    chaoslib:
-      name: "restart-kubelet"
-      type: ansible
-      description: "An experiment to restart kubelet on a node"
-      version: v1.0.0
-  chaosLibs:
-    - name: restart-kubelet
-      url: https://github.com/balarobin/ansiblelitmus
-      path: charts/restart-kubelet/restart-kubelet.yaml
+    permissions:
+      - apiGroups: [""]
+        resources: ["nodes"]
+        verbs: ["get", "list", "patch"]
+    image: litmuschaos/ansible-runner:latest
+    args:
+      - ansible-playbook
+      - ./restart-kubelet.yaml
+    env:
+      - name: TARGET_NODE
+        value: "node-name"
