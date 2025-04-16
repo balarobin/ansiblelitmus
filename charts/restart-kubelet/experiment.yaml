@@ -15,4 +15,4 @@ spec:
   chaosLibs:
     - name: restart-kubelet
       url: https://github.com/balarobin/ansiblelitmus
-      path: charts/restart-kubelet/ansible/restart-kubelet.yaml
+      path: charts/restart-kubelet/restart-kubelet.yaml
