@@ -1,0 +1,20 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: restart-kubelet-engine
+  namespace: litmus
+spec:
+  appinfo:
+    appns: default
+    applabel: "app=nginx"
+    appkind: deployment
+  jobCleanUpPolicy: retain
+  engineState: active
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: restart-kubelet
+      spec:
+        components:
+          env:
+            - name: TARGET_NODES
+              value: "node01"  # Replace with your actual node name
