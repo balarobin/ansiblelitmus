@@ -2,8 +2,11 @@ apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosHub
 metadata:
   name: ansiblelitmus-hub
+  namespace: litmus
 spec:
-  hubName: ansiblelitmus-hub
-  repoURL: https://github.com/balarobin/ansiblelitmus.git
-  branch: main
-  isPrivate: false
+  chart:
+    repo: https://github.com/balarobin/ansiblelitmus
+    branch: main
+    path: charts/restart-kubelet/
+  annotations:
+    litmuschaos.io/chaoslib-name: "restart-kubelet"
