@@ -1,0 +1,34 @@
+apiVersion: litmuschaos.io/v1alpha1
+description:
+  message: |
+    Restart kubelet on the target node using Ansible
+kind: ChaosExperiment
+metadata:
+  name: kubelet-restart-ansible
+  labels:
+    name: kubelet-restart-ansible
+spec:
+  definition:
+    scope: Cluster
+    permissions:
+      - apiGroups: [""]
+        resources: ["pods", "nodes"]
+        verbs: ["get", "list", "delete"]
+    image: litmuschaos/go-runner:2.7.0
+    args:
+      - -c
+      - ansible-playbook /utils/kubelet-restart.yaml -i /utils/inventory
+    command:
+      - /bin/bash
+    env:
+      - name: TARGET_NODE
+        value: "node01"
+      - name: ANSIBLE_INVENTORY
+        value: |
+          [servers]
+          node01 ansible_host=10.0.0.1 ansible_user=root
+    labels:
+      name: kubelet-restart-ansible
+    configMaps:
+      - name: ansible-playbook-cm
+        mountPath: /utils
