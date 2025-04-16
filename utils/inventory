@@ -1,0 +1,4 @@
+[servers]
+vnodevlan7-82-45 ansible_host=10.7.82.45   ansible_fqdn=vnodevlan7-82-45.robinsystems.com
+vnodevlan7-82-47 ansible_host=10.7.82.47   ansible_fqdn=vnodevlan7-82-47.robinsystems.com
+vnodevlan7-82-49 ansible_host=10.7.82.49   ansible_fqdn=vnodevlan7-82-49.robinsystems.com
