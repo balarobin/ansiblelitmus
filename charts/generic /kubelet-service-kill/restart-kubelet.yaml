@@ -1,9 +1,0 @@
----
-- name: Restart kubelet on target node
-  hosts: all
-  become: yes
-  tasks:
-    - name: Restart kubelet
-      ansible.builtin.systemd:
-        name: kubelet
-        state: restarted
