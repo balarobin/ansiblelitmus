@@ -1,0 +1,21 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: kubelet-restart-engine
+  namespace: litmus
+spec:
+  appinfo:
+    appns: default
+    applabel: ""
+    appkind: ""
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: kubelet-restart-ansible
+      spec:
+        components:
+          env:
+            - name: TARGET_NODE
+              value: "node01"
+  annotationCheck: "false"
+  engineState: active
+  jobCleanUpPolicy: retain
