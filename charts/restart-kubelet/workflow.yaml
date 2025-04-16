@@ -18,4 +18,4 @@ spec:
           - -c
           - |
             git clone https://github.com/balarobin/ansiblelitmus.git && \
-            ansible-playbook ansiblelitmus/charts/restart-kubelet/ansible/restart-kubelet.yaml
+            ansible-playbook ansiblelitmus/charts/restart-kubelet/restart-kubelet.yaml
