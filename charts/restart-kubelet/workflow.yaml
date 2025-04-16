@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: restart-kubelet-
+spec:
+  entrypoint: restart-kubelet
+  serviceAccountName: litmus
+  templates:
+    - name: restart-kubelet
+      steps:
+        - - name: chaos
+            template: chaos-run
+    - name: chaos-run
+      container:
+        image: litmuschaos/ansible-runner:latest
+        command: ["/bin/bash"]
+        args:
+          - -c
+          - |
+            git clone https://github.com/balarobin/ansiblelitmus.git && \
+            ansible-playbook ansiblelitmus/charts/restart-kubelet/ansible/restart-kubelet.yaml
