@@ -1,12 +1,11 @@
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosHub
 metadata:
-  name: ansiblelitmus-hub
-  namespace: litmus
+  name: your-kubelet-hub
+  labels:
+    version: v1
 spec:
-  chart:
-    repo: https://github.com/balarobin/ansiblelitmus
-    branch: main
-    path: charts/restart-kubelet/
-  annotations:
-    litmuschaos.io/chaoslib-name: "restart-kubelet"
+  source:
+    git:
+      repoURL: "https://github.com/balarobin/ansiblelitmus.git" # Replace with your repo URL
+      branch: "main" # Or your main branch name
